@@ -12,7 +12,6 @@ Main-Class:
 ```java
 package YourPackage;
 
-import de.splatgames.identification.api.Identification;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

@@ -42,11 +42,13 @@ public final class yourMainClass extends JavaPlugin {
 ```
 
 CMD-Class:
+
 ```java
 package YourPackage;
 
 import YourPackage.yourMain;
 import YourPackage.InventoryManager;
+import de.splatcrafter.leavessimulator.api.inventorymanager.CustomItem;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -54,18 +56,19 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class yourCMD implements CommandExecutor {
-    
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player player = (Player) sender;
 
-        InventoryManager inventory = new InventoryManager(player, size, name, new InventoryManager.InventoryClickEventHandler() {
+        InventoryManager inventory = new InventoryManager(player, size, name, state);
+
+        inventory.setItem(new CustomItem(slot, ItemStack) {
             @Override
-            public void onInventoryClick(InventoryManager.InventoryClickEvent event) {
-                //YourCode
+            public void onClick(InventoryClickEvent event) {
+                //your code...
             }
-        }, true);
-        
+        });
         return false;
     }
 }
